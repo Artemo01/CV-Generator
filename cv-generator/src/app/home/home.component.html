@@ -1,0 +1,37 @@
+<div class="container my-5">
+  <div class="d-flex flex-row w-100">
+    <div class="d-flex flex-column justify-content-center w-50 p-5">
+      <h1>CV Generator</h1>
+      <h2>Your professional CV creator</h2>
+      <p>
+        Create your CV in minutes! A simple and intuitive way to craft a
+        professional document.
+      </p>
+      <div class="mt-3">
+        <button class="btn btn-primary px-4">Create CV now</button>
+      </div>
+    </div>
+    <div class="w-50">
+      <img class="rounded" src="assets/hiring.svg" alt="CV" />
+    </div>
+  </div>
+
+  <h1 class="text-center mt-5">How to create CV</h1>
+  <div class="d-flex flex-row w-100 mt-5">
+    <div class="w-50">
+      <div *ngFor="let step of steps; let i = index">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ step.step }}. {{ step.title }}</h5>
+            <p class="card-text">
+              {{ step.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-50">
+      <!-- Placeholder for image -->
+    </div>
+  </div>
+</div>
