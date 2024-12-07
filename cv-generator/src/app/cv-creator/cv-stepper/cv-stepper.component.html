@@ -1,0 +1,22 @@
+<mat-stepper #stepper>
+  <mat-step [completed]="false" label="About me">
+    <app-about-me-step></app-about-me-step>
+    <button mat-button matStepperNext>Next</button>
+  </mat-step>
+  <mat-step [completed]="false" label="Contact">
+    <app-contact-step></app-contact-step>
+    <button mat-button matStepperNext>Next</button>
+    <button mat-button matStepperPrevious>Back</button>
+  </mat-step>
+  <mat-step [completed]="false" label="Languages">
+    <app-languages-step></app-languages-step>
+    <button mat-button matStepperNext>Next</button>
+    <button mat-button matStepperPrevious>Back</button>
+  </mat-step>
+  <mat-step [completed]="false" label="Education">
+    <app-education-step></app-education-step>
+    <button mat-button matStepperPrevious>Back</button>
+  </mat-step>
+</mat-stepper>
+
+<button (click)="downloadCV()">Donwload PDF</button>
