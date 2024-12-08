@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CvDocumentModel } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -8,12 +9,15 @@ import { Observable } from 'rxjs';
 export class CvCreatorProvider {
   constructor(private http: HttpClient) {}
 
-  public generatePdf(): Observable<Blob> {
+  public generatePdf(documentModel: CvDocumentModel): Observable<Blob> {
     const url = 'https://localhost:44390/api/Pdf/generate';
     const headers = new HttpHeaders({
-      Accept: 'application/pdf', // Informujemy serwer, że oczekujemy pliku PDF
+      Accept: 'application/pdf',
     });
 
-    return this.http.get(url, { headers, responseType: 'blob' });
+    return this.http.post(url, documentModel, {
+      headers,
+      responseType: 'blob',
+    });
   }
 }

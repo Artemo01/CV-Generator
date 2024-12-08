@@ -16,8 +16,8 @@ public class PdfController : ControllerBase
         _pdfService = pdfService;
     }
     
-    [HttpGet("generate")]
-    public IActionResult GeneratePdf()
+    [HttpPost("generate")]
+    public IActionResult GeneratePdf([FromBody] CvDocumentModel documentModel)
     {
         var programmingSkills = new List<Skill>
         {
@@ -135,7 +135,7 @@ public class PdfController : ControllerBase
             }
         };
             
-        var document = _pdfService.GenerateSamplePdf(cvDocumentMode);
+        var document = _pdfService.GenerateSamplePdf(documentModel);
         var pdf = document.GeneratePdf();
         return File(pdf, "application/pdf", "FakeCV.pdf");
     }

@@ -7,6 +7,11 @@ import { EducationStepComponent } from './steps/education-step/education-step.co
 import { LanguagesStepComponent } from './steps/languages-step/languages-step.component';
 import { CvCreatorProvider } from '../cv-creator.provider';
 import { HttpClientModule } from '@angular/common/http';
+import {
+  ColumnPosition,
+  CvDocumentModel,
+  LanguageProficiencyLevel,
+} from '../models';
 
 @Component({
   selector: 'app-cv-stepper',
@@ -25,10 +30,81 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [CvCreatorProvider],
 })
 export class CvStepperComponent {
-  constructor(private cvProvider: CvCreatorProvider) {}
+  private documentModel: CvDocumentModel;
+
+  constructor(private cvProvider: CvCreatorProvider) {
+    this.documentModel = {
+      aboutMe: {
+        firstName: 'Jan',
+        lastName: 'Kowalski',
+        job: 'Full-Stack Developer',
+        aboutMeText: 'Z pasją tworzę nowoczesne aplikacje webowe.',
+        columnPosition: ColumnPosition.left,
+      },
+      contact: {
+        email: 'jan.kowalski@example.com',
+        phone: '+48 123 456 789',
+        born: new Date('1990-01-01'),
+        address: 'ul. Przykładowa 1, 00-000 Miasto',
+        columnPosition: ColumnPosition.left,
+      },
+      languageSection: {
+        languages: [
+          {
+            languageName: 'Polski',
+            proficiencyLevel: LanguageProficiencyLevel.native,
+          },
+          {
+            languageName: 'Angielski',
+            proficiencyLevel: LanguageProficiencyLevel.fluent,
+          },
+        ],
+        columnPosition: ColumnPosition.left,
+      },
+      educationSection: {
+        educations: [
+          {
+            startDate: new Date('2010-10-01'),
+            endDate: new Date('2014-06-30'),
+            faculty: 'Informatyka',
+            degreeTitle: 'Inżynier',
+            institutionType: 'Politechnika',
+            additionalInfo: 'Specjalizacja: Programowanie aplikacji webowych',
+          },
+        ],
+        columnPosition: ColumnPosition.right,
+      },
+      workExperienceSection: {
+        workExperiences: [
+          {
+            startDate: new Date('2015-07-01'),
+            endDate: new Date('2020-09-30'),
+            companyName: 'ABC Software',
+            position: 'Programista',
+            experienceDescriptions: [
+              'Tworzenie aplikacji webowych',
+              'Praca w zespole SCRUM',
+            ],
+          },
+        ],
+        columnPosition: ColumnPosition.right,
+      },
+      skillSections: [
+        {
+          sectionName: 'Technologie',
+          skills: [
+            { skillName: 'JavaScript', skillLevel: 90 },
+            { skillName: 'Angular', skillLevel: 80 },
+          ],
+          showLevel: true,
+          columnPosition: ColumnPosition.right,
+        },
+      ],
+    };
+  }
 
   public downloadCV(): void {
-    this.cvProvider.generatePdf().subscribe({
+    this.cvProvider.generatePdf(this.documentModel).subscribe({
       next: (response: Blob) => this.downloadFile(response),
       error: (error) => console.error('Error generating CV:', error),
     });

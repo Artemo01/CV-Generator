@@ -64,7 +64,7 @@ export interface SkillSection extends ColumnPositionModel {
 
 export interface WorkExperience {
   startDate: Date;
-  eEndDate: Date;
+  endDate: Date;
   companyName: string;
   position: string;
   experienceDescriptions: string[];
