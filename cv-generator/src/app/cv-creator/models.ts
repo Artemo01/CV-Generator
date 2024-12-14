@@ -1,11 +1,3 @@
-import { FormGroup, FormControl } from '@angular/forms';
-
-export type ControlsOf<T> = {
-  [K in keyof T]: T[K] extends object
-    ? FormGroup<ControlsOf<T[K]>>
-    : FormControl<T[K]>;
-};
-
 export interface CvDocumentModel {
   aboutMe: AboutMe;
   contact: Contact;

@@ -1,1 +1,27 @@
-<p>about-me-step works!</p>
+<form [formGroup]="form" class="d-flex flex-row justify-content-center mt-5">
+  <div class="flex-column w-50">
+    <mat-form-field class="w-100">
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Last name</mat-label>
+      <input matInput formControlName="lastName" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Job title</mat-label>
+      <input matInput formControlName="job" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>About me</mat-label>
+      <textarea matInput formControlName="aboutMeText" rows="5"></textarea>
+    </mat-form-field>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary px-4" (click)="nextStep()">Next</button>
+    </div>
+  </div>
+</form>

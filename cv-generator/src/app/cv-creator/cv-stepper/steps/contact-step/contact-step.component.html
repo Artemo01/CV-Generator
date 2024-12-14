@@ -1,1 +1,32 @@
-<p>contact works!</p>
+<form [formGroup]="form" class="d-flex flex-row justify-content-center mt-5">
+  <div class="flex-column w-50">
+    <mat-form-field class="w-100">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Born</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="born" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" />
+    </mat-form-field>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary px-4" (click)="nextStep()">Next</button>
+    </div>
+  </div>
+</form>
