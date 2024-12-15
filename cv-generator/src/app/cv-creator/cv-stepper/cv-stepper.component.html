@@ -1,14 +1,14 @@
-<mat-stepper #stepper>
-  <mat-step [completed]="false" label="About me">
+<mat-stepper #stepper [linear]="true">
+  <mat-step label="About me">
     <app-about-me-step (next)="stepper.next()"></app-about-me-step>
   </mat-step>
-  <mat-step [completed]="false" label="Contact">
+  <mat-step label="Contact">
     <app-contact-step (next)="stepper.next()"></app-contact-step>
   </mat-step>
-  <mat-step [completed]="false" label="Languages">
-    <app-languages-step></app-languages-step>
+  <mat-step label="Languages">
+    <app-languages-step (next)="stepper.next()"></app-languages-step>
   </mat-step>
-  <mat-step [completed]="false" label="Education">
+  <mat-step label="Education">
     <app-education-step></app-education-step>
   </mat-step>
 </mat-stepper>

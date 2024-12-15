@@ -6,6 +6,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ControlsOf } from '../../../../models';
+import { Contact } from '../../../models';
 
 @Component({
   selector: 'app-contact-step',
@@ -24,7 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 export class ContactStepComponent {
   @Output() next = new EventEmitter<void>();
 
-  public form: FormGroup;
+  public form: FormGroup<ControlsOf<Contact>>;
 
   constructor(private cvFormBuilder: CvFormBuilder) {
     this.form = this.cvFormBuilder.buildContactForm();

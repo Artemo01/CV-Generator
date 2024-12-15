@@ -4,6 +4,8 @@ import { CvFormBuilder } from '../../../cv-form-builder';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { ControlsOf } from '../../../../models';
+import { AboutMe } from '../../../models';
 
 @Component({
   selector: 'app-about-me-step',
@@ -20,7 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class AboutMeStepComponent {
   @Output() next = new EventEmitter<void>();
 
-  public form: FormGroup;
+  public form: FormGroup<ControlsOf<AboutMe>>;
 
   constructor(private cvFormBuilder: CvFormBuilder) {
     this.form = this.cvFormBuilder.buildAboutMeForm();

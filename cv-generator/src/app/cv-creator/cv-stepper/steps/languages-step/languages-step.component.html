@@ -1,1 +1,57 @@
-<p>languages-step works!</p>
+<form [formGroup]="form" class="d-flex flex-row justify-content-center mt-5">
+  <div class="flex-column w-50">
+    <div formArrayName="languages">
+      <div
+        *ngFor="
+          let languageForm of form.controls.languages.controls;
+          let i = index
+        "
+      >
+        <div [formGroup]="languageForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Language</mat-label>
+            <input
+              matInput
+              formControlName="languageName"
+              placeholder="Enter language"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Proficiency Level</mat-label>
+            <mat-select formControlName="proficiencyLevel">
+              <mat-option
+                *ngFor="let level of proficiencyLevels"
+                [value]="level"
+              >
+                {{ level }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button
+            *ngIf="i === 0"
+            mat-icon-button
+            color="primary"
+            (click)="addLanguage()"
+            matTooltip="Add Language"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+          <button
+            *ngIf="i > 0"
+            mat-icon-button
+            color="warn"
+            (click)="removeLanguage(i)"
+            matTooltip="Remove Language"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary px-4" (click)="nextStep()">Next</button>
+    </div>
+  </div>
+</form>
