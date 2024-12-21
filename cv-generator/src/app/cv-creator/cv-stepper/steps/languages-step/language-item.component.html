@@ -1,1 +1,38 @@
-<form></form>
+<form [formGroup]="form" class="d-flex justify-content-between">
+  <mat-form-field appearance="fill">
+    <mat-label>Language</mat-label>
+    <input
+      matInput
+      formControlName="languageName"
+      placeholder="Enter language"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-50">
+    <mat-label>Proficiency Level</mat-label>
+    <mat-select formControlName="proficiencyLevel">
+      <mat-option *ngFor="let level of proficiencyLevels" [value]="level">
+        {{ level }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    *ngIf="index === 0"
+    mat-icon-button
+    color="primary"
+    (click)="addLanguage.emit()"
+    matTooltip="Add Language"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <button
+    *ngIf="index > 0"
+    mat-icon-button
+    color="warn"
+    (click)="removeLanguage.emit(index)"
+    matTooltip="Remove Language"
+  >
+    <mat-icon>remove</mat-icon>
+  </button>
+</form>

@@ -7,47 +7,12 @@
           let i = index
         "
       >
-        <div [formGroup]="languageForm">
-          <mat-form-field appearance="fill">
-            <mat-label>Language</mat-label>
-            <input
-              matInput
-              formControlName="languageName"
-              placeholder="Enter language"
-            />
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Proficiency Level</mat-label>
-            <mat-select formControlName="proficiencyLevel">
-              <mat-option
-                *ngFor="let level of proficiencyLevels"
-                [value]="level"
-              >
-                {{ level }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <button
-            *ngIf="i === 0"
-            mat-icon-button
-            color="primary"
-            (click)="addLanguage()"
-            matTooltip="Add Language"
-          >
-            <mat-icon>add</mat-icon>
-          </button>
-          <button
-            *ngIf="i > 0"
-            mat-icon-button
-            color="warn"
-            (click)="removeLanguage(i)"
-            matTooltip="Remove Language"
-          >
-            <mat-icon>remove</mat-icon>
-          </button>
-        </div>
+        <app-language-item
+          [form]="languageForm"
+          [index]="i"
+          (addLanguage)="addLanguage()"
+          (removeLanguage)="removeLanguage(i)"
+        ></app-language-item>
       </div>
     </div>
     <div class="d-flex justify-content-end">

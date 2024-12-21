@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { LanguagesItemComponent } from './language-item.component';
 
 @Component({
   selector: 'app-languages-step',
@@ -36,6 +37,7 @@ import { CommonModule } from '@angular/common';
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
+    LanguagesItemComponent,
   ],
   templateUrl: './languages-step.component.html',
   styleUrl: './languages-step.component.scss',
@@ -44,7 +46,6 @@ export class LanguagesStepComponent implements OnInit {
   @Output() next = new EventEmitter<void>();
 
   public form: FormGroup<ControlsOf<LanguageSection>>;
-  public proficiencyLevels = Object.values(LanguageProficiencyLevel);
 
   public get languages(): FormArray {
     return this.form.controls.languages as FormArray;
@@ -69,7 +70,6 @@ export class LanguagesStepComponent implements OnInit {
 
   public addLanguage(): void {
     this.form.controls.languages.push(this.createLanguageFormGroup());
-    console.log(this.languages.value);
   }
 
   public removeLanguage(index: number): void {
