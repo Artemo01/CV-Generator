@@ -1,0 +1,44 @@
+<form class="d-flex flex-column">
+  <div class="d-flex flex-row">
+    <mat-form-field class="w-100">
+      <mat-label>Start date</mat-label>
+      <input matInput [matDatepicker]="startDate" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="startDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
+
+    <div class="gap"></div>
+
+    <mat-form-field class="w-100">
+      <mat-label>End date</mat-label>
+      <input matInput [matDatepicker]="endDate" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="endDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Faculty</mat-label>
+    <input matInput placeholder="Enter language" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Degree title</mat-label>
+    <input matInput placeholder="Enter language" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Instytution type</mat-label>
+    <input matInput placeholder="Enter language" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Additional info</mat-label>
+    <input matInput placeholder="Enter language" />
+  </mat-form-field>
+
+  <hr />
+</form>
