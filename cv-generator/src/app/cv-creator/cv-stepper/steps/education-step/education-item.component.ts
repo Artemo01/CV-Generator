@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ControlsOf } from '../../../../models';
 import { Education } from '../../../models';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-education-item',
@@ -20,6 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatButtonModule,
     MatIconModule,
     MatDatepickerModule,
+    MatExpansionModule,
   ],
   templateUrl: './education-item.component.html',
   styleUrl: './education-item.component.scss',
@@ -27,6 +29,5 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 export class EducationItemComponent {
   @Input() form!: FormGroup<ControlsOf<Education>>;
   @Input() index: number = 0;
-  @Output() addEducationItem = new EventEmitter<void>();
   @Output() removeEducationItem = new EventEmitter<number>();
 }

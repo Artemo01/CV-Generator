@@ -1,5 +1,26 @@
 <form [formGroup]="form" class="d-flex flex-row justify-content-center mt-5">
   <div class="flex-column w-50">
-    <app-education-item></app-education-item>
+    <div formArrayName="educations">
+      <div
+        *ngFor="
+          let languageForm of form.controls.educations.controls;
+          let i = index
+        "
+      >
+        <app-education-item
+          [form]="languageForm"
+          [index]="i"
+          (removeEducationItem)="removeEducation(i)"
+        ></app-education-item>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <button mat-fab extended color="primary" (click)="addEducation()">
+        Add education <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+    <div class="d-flex justify-content-end mt-5">
+      <button class="btn btn-primary px-4" (click)="nextStep()">Next</button>
+    </div>
   </div>
 </form>
