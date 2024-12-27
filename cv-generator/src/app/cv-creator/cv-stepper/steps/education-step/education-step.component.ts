@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { EducationItemComponent } from './education-item.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { EducationStepService } from './education-step.service';
 
 @Component({
   selector: 'app-education-step',
@@ -24,28 +25,27 @@ import { MatButtonModule } from '@angular/material/button';
 export class EducationStepComponent implements OnInit {
   @Output() next = new EventEmitter<void>();
 
-  public form: FormGroup<ControlsOf<EducationSection>>;
-
-  constructor(private cvFormBuilder: CvFormBuilder) {
-    this.form = this.cvFormBuilder.buildEducationSectionForm();
-  }
+  constructor(
+    public readonly service: EducationStepService,
+    private cvFormBuilder: CvFormBuilder
+  ) {}
   public ngOnInit(): void {
     this.addEducation();
   }
 
   public nextStep(): void {
-    if (this.form.valid) {
+    if (this.service.form.valid) {
       this.next.emit();
     }
   }
 
   public addEducation(): void {
-    this.form.controls.educations.push(
+    this.service.form.controls.educations.push(
       this.cvFormBuilder.createEducationFormGroup()
     );
   }
 
   public removeEducation(index: number): void {
-    this.form.controls.educations.removeAt(index);
+    this.service.form.controls.educations.removeAt(index);
   }
 }

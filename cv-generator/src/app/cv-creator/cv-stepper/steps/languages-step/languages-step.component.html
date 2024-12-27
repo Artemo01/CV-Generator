@@ -1,9 +1,12 @@
-<form [formGroup]="form" class="d-flex flex-row justify-content-center mt-5">
+<form
+  [formGroup]="service.form"
+  class="d-flex flex-row justify-content-center mt-5"
+>
   <div class="flex-column w-50">
     <div formArrayName="languages">
       <div
         *ngFor="
-          let languageForm of form.controls.languages.controls;
+          let languageForm of service.form.controls.languages.controls;
           let i = index
         "
       >

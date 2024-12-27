@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { LanguagesItemComponent } from './language-item.component';
+import { LanguagesStepService } from './languages-step.service';
 
 @Component({
   selector: 'app-languages-step',
@@ -28,33 +29,32 @@ import { LanguagesItemComponent } from './language-item.component';
 export class LanguagesStepComponent implements OnInit {
   @Output() next = new EventEmitter<void>();
 
-  public form: FormGroup<ControlsOf<LanguageSection>>;
-
   public get languages(): FormArray {
-    return this.form.controls.languages as FormArray;
+    return this.service.form.controls.languages as FormArray;
   }
 
-  constructor(private cvFormBuilder: CvFormBuilder) {
-    this.form = this.cvFormBuilder.buildLanguageSectionForm();
-  }
+  constructor(
+    public readonly service: LanguagesStepService,
+    private cvFormBuilder: CvFormBuilder
+  ) {}
 
   public ngOnInit(): void {
     this.addLanguage();
   }
 
   public nextStep(): void {
-    if (this.form.valid) {
+    if (this.service.form.valid) {
       this.next.emit();
     }
   }
 
   public addLanguage(): void {
-    this.form.controls.languages.push(
+    this.service.form.controls.languages.push(
       this.cvFormBuilder.createLanguageFormGroup()
     );
   }
 
   public removeLanguage(index: number): void {
-    this.form.controls.languages.removeAt(index);
+    this.service.form.controls.languages.removeAt(index);
   }
 }

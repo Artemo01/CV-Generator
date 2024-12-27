@@ -9,6 +9,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ControlsOf } from '../../../../models';
 import { Contact } from '../../../models';
 import { AboutMeStepService } from '../about-me-step/about-me-step.service';
+import { ContactStepService } from './contact-step.service';
 
 @Component({
   selector: 'app-contact-step',
@@ -27,14 +28,10 @@ import { AboutMeStepService } from '../about-me-step/about-me-step.service';
 export class ContactStepComponent {
   @Output() next = new EventEmitter<void>();
 
-  public form: FormGroup<ControlsOf<Contact>>;
-
-  constructor(private cvFormBuilder: CvFormBuilder) {
-    this.form = this.cvFormBuilder.buildContactForm();
-  }
+  constructor(public service: ContactStepService) {}
 
   public nextStep(): void {
-    if (this.form.valid) {
+    if (this.service.form.valid) {
       this.next.emit();
     }
   }
