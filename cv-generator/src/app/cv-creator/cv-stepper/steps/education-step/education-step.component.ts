@@ -1,7 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { EducationSection } from '../../../models';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ControlsOf } from '../../../../models';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CvFormBuilder } from '../../../cv-form-builder';
 import { CommonModule } from '@angular/common';
 import { EducationItemComponent } from './education-item.component';

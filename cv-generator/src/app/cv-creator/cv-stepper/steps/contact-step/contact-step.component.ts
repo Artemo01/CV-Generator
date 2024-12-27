@@ -1,14 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CvFormBuilder } from '../../../cv-form-builder';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { ControlsOf } from '../../../../models';
-import { Contact } from '../../../models';
-import { AboutMeStepService } from '../about-me-step/about-me-step.service';
 import { ContactStepService } from './contact-step.service';
 
 @Component({
