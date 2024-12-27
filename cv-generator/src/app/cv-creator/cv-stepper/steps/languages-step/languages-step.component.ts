@@ -1,25 +1,8 @@
-import {
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CvFormBuilder } from '../../../cv-form-builder';
 import { ControlsOf } from '../../../../models';
-import {
-  Language,
-  LanguageProficiencyLevel,
-  LanguageSection,
-} from '../../../models';
+import { LanguageSection } from '../../../models';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -51,10 +34,7 @@ export class LanguagesStepComponent implements OnInit {
     return this.form.controls.languages as FormArray;
   }
 
-  constructor(
-    private cvFormBuilder: CvFormBuilder,
-    private formBuilder: FormBuilder
-  ) {
+  constructor(private cvFormBuilder: CvFormBuilder) {
     this.form = this.cvFormBuilder.buildLanguageSectionForm();
   }
 
@@ -69,26 +49,12 @@ export class LanguagesStepComponent implements OnInit {
   }
 
   public addLanguage(): void {
-    this.form.controls.languages.push(this.createLanguageFormGroup());
+    this.form.controls.languages.push(
+      this.cvFormBuilder.createLanguageFormGroup()
+    );
   }
 
   public removeLanguage(index: number): void {
     this.form.controls.languages.removeAt(index);
-  }
-
-  private createLanguageFormGroup(): FormGroup<ControlsOf<Language>> {
-    return this.formBuilder.group({
-      languageName: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      proficiencyLevel: new FormControl<LanguageProficiencyLevel>(
-        LanguageProficiencyLevel.beginner,
-        {
-          nonNullable: true,
-          validators: [Validators.required],
-        }
-      ),
-    });
   }
 }

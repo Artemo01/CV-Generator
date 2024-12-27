@@ -9,7 +9,10 @@
     <app-languages-step (next)="stepper.next()"></app-languages-step>
   </mat-step>
   <mat-step label="Education">
-    <app-education-step></app-education-step>
+    <app-education-step (next)="stepper.next()"></app-education-step>
+  </mat-step>
+  <mat-step label="Additional info">
+    <app-additional-info-step></app-additional-info-step>
   </mat-step>
 </mat-stepper>
 

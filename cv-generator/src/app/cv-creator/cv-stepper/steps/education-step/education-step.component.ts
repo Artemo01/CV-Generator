@@ -1,12 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Education, EducationSection } from '../../../models';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { EducationSection } from '../../../models';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ControlsOf } from '../../../../models';
 import { CvFormBuilder } from '../../../cv-form-builder';
 import { CommonModule } from '@angular/common';
@@ -32,10 +26,7 @@ export class EducationStepComponent implements OnInit {
 
   public form: FormGroup<ControlsOf<EducationSection>>;
 
-  constructor(
-    private cvFormBuilder: CvFormBuilder,
-    private formBuilder: FormBuilder
-  ) {
+  constructor(private cvFormBuilder: CvFormBuilder) {
     this.form = this.cvFormBuilder.buildEducationSectionForm();
   }
   public ngOnInit(): void {
@@ -49,39 +40,12 @@ export class EducationStepComponent implements OnInit {
   }
 
   public addEducation(): void {
-    this.form.controls.educations.push(this.createEducationFormGroup());
+    this.form.controls.educations.push(
+      this.cvFormBuilder.createEducationFormGroup()
+    );
   }
 
   public removeEducation(index: number): void {
     this.form.controls.educations.removeAt(index);
-  }
-
-  private createEducationFormGroup(): FormGroup<ControlsOf<Education>> {
-    return this.formBuilder.group({
-      startDate: new FormControl<Date>(new Date(), {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      endDate: new FormControl<Date>(new Date(), {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      faculty: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      degreeTitle: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      institutionType: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      additionalInfo: new FormControl<string>('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-    });
   }
 }

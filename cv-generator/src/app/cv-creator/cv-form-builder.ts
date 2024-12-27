@@ -13,6 +13,7 @@ import {
   Education,
   EducationSection,
   Language,
+  LanguageProficiencyLevel,
   LanguageSection,
 } from './models';
 import { ControlsOf } from '../models';
@@ -83,10 +84,55 @@ export class CvFormBuilder {
     });
   }
 
+  public createLanguageFormGroup(): FormGroup<ControlsOf<Language>> {
+    return this.formBuilder.group({
+      languageName: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      proficiencyLevel: new FormControl<LanguageProficiencyLevel>(
+        LanguageProficiencyLevel.beginner,
+        {
+          nonNullable: true,
+          validators: [Validators.required],
+        }
+      ),
+    });
+  }
+
   public buildEducationSectionForm(): FormGroup<ControlsOf<EducationSection>> {
     return this.formBuilder.group({
       educations: this.formBuilder.array<FormGroup<ControlsOf<Education>>>([]),
       columnPosition: new FormControl<ColumnPosition>(ColumnPosition.left, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+    });
+  }
+
+  public createEducationFormGroup(): FormGroup<ControlsOf<Education>> {
+    return this.formBuilder.group({
+      startDate: new FormControl<Date>(new Date(), {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      endDate: new FormControl<Date>(new Date(), {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      faculty: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      degreeTitle: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      institutionType: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      additionalInfo: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required],
       }),

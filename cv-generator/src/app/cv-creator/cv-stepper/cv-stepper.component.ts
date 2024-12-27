@@ -12,6 +12,7 @@ import {
   CvDocumentModel,
   LanguageProficiencyLevel,
 } from '../models';
+import { AdditionalInfoStepComponent } from './steps/additional-info-step/additional-info-step.component';
 
 @Component({
   selector: 'app-cv-stepper',
@@ -23,6 +24,7 @@ import {
     ContactStepComponent,
     LanguagesStepComponent,
     EducationStepComponent,
+    AdditionalInfoStepComponent,
     HttpClientModule,
   ],
   templateUrl: './cv-stepper.component.html',
