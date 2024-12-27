@@ -1,11 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CvFormBuilder } from '../../../cv-form-builder';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { ControlsOf } from '../../../../models';
-import { AboutMe } from '../../../models';
+import { AboutMeStepService } from './about-me-step.service';
 
 @Component({
   selector: 'app-about-me-step',
@@ -22,19 +20,10 @@ import { AboutMe } from '../../../models';
 export class AboutMeStepComponent {
   @Output() next = new EventEmitter<void>();
 
-  public form: FormGroup<ControlsOf<AboutMe>>;
-
-  constructor(private cvFormBuilder: CvFormBuilder) {
-    this.form = this.cvFormBuilder.buildAboutMeForm();
-  }
-
-  public test() {
-    console.log(this.form.valid);
-    console.log(this.form.controls);
-  }
+  constructor(public readonly service: AboutMeStepService) {}
 
   public nextStep(): void {
-    if (this.form.valid) {
+    if (this.service.form.valid) {
       this.next.emit();
     }
   }

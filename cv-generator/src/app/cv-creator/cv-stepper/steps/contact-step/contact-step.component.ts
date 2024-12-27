@@ -8,6 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ControlsOf } from '../../../../models';
 import { Contact } from '../../../models';
+import { AboutMeStepService } from '../about-me-step/about-me-step.service';
 
 @Component({
   selector: 'app-contact-step',
