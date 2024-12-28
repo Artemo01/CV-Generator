@@ -1,31 +1,35 @@
 <div class="d-flex flex-row justify-content-center mt-5">
   <div class="d-flex flex-column w-50">
     <div
+      id="leftColumnList"
       cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[doneList]"
+      #leftColumnList="cdkDropList"
+      [cdkDropListData]="leftColumn"
+      [cdkDropListConnectedTo]="[rightColumnList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      @for (item of todo; track item) {
-      <div class="example-box" cdkDrag>{{ item }}</div>
-      }
+      <div *ngFor="let form of leftColumn" class="example-box" cdkDrag>
+        {{ form.label }}
+      </div>
     </div>
   </div>
 
   <div class="d-flex flex-column w-50">
     <div
+      id="rightColumnList"
       cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[todoList]"
+      #rightColumnList="cdkDropList"
+      [cdkDropListData]="rightColumn"
+      [cdkDropListConnectedTo]="[leftColumnList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      @for (item of done; track item) {
-      <div class="example-box" cdkDrag>{{ item }}</div>
-      }
+      <div *ngFor="let form of rightColumn" class="example-box" cdkDrag>
+        {{ form.label }}
+      </div>
     </div>
   </div>
 </div>
+
+<button (click)="test()">test</button>

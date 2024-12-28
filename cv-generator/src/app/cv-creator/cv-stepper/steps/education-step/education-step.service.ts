@@ -18,6 +18,10 @@ export class EducationStepService {
     this.summaryItems$ = this.getSummaryItems();
   }
 
+  public updateColumnPosition(position: ColumnPosition): void {
+    this.form.patchValue({ columnPosition: position });
+  }
+
   private getSummaryItems(): Observable<EducationSection> {
     return this.form.valueChanges.pipe(
       startWith(this.form.value),
@@ -32,7 +36,7 @@ export class EducationStepService {
   ): EducationSection {
     return {
       educations: formValue.educations || [],
-      columnPosition: formValue.columnPosition || ColumnPosition.left,
+      columnPosition: formValue.columnPosition || ColumnPosition.right,
     };
   }
 }

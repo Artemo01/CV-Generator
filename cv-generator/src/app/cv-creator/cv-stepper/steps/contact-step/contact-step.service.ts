@@ -18,6 +18,10 @@ export class ContactStepService {
     this.summaryItems$ = this.getSummaryItems();
   }
 
+  public updateColumnPosition(position: ColumnPosition): void {
+    this.form.patchValue({ columnPosition: position });
+  }
+
   private getSummaryItems(): Observable<Contact> {
     return this.form.valueChanges.pipe(
       startWith(this.form.value),

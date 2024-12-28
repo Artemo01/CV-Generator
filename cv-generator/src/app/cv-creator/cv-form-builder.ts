@@ -103,7 +103,7 @@ export class CvFormBuilder {
   public buildEducationSectionForm(): FormGroup<ControlsOf<EducationSection>> {
     return this.formBuilder.group({
       educations: this.formBuilder.array<FormGroup<ControlsOf<Education>>>([]),
-      columnPosition: new FormControl<ColumnPosition>(ColumnPosition.left, {
+      columnPosition: new FormControl<ColumnPosition>(ColumnPosition.right, {
         nonNullable: true,
         validators: [Validators.required],
       }),

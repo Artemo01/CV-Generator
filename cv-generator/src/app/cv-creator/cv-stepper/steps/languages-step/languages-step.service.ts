@@ -18,6 +18,10 @@ export class LanguagesStepService {
     this.summaryItems$ = this.getSummaryItems();
   }
 
+  public updateColumnPosition(position: ColumnPosition): void {
+    this.form.patchValue({ columnPosition: position });
+  }
+
   private getSummaryItems(): Observable<LanguageSection> {
     return this.form.valueChanges.pipe(
       startWith(this.form.value),
