@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ReactiveFormsModule, FormGroup } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormGroup,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -30,4 +35,17 @@ export class ExperienceItemComponent {
   @Input() form!: FormGroup<ControlsOf<WorkExperience>>;
   @Input() index: number = 0;
   @Output() removeExperienceItem = new EventEmitter<number>();
+
+  public addWorkExperienceDescription(): void {
+    this.form.controls.experienceDescriptions.push(
+      new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      })
+    );
+  }
+
+  public removeWorkExperienceDescription(index: number): void {
+    this.form.controls.experienceDescriptions.removeAt(index);
+  }
 }

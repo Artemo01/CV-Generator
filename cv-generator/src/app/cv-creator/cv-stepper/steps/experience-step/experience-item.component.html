@@ -56,6 +56,40 @@
           <mat-label>Position</mat-label>
           <input matInput formControlName="position" />
         </mat-form-field>
+
+        <div formArrayName="experienceDescriptions">
+          <div
+            *ngFor="
+              let description of form.controls.experienceDescriptions.controls;
+              let i = index
+            "
+          >
+            <div class="d-flex flex-row w-100">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Description {{ i + 1 }}</mat-label>
+                <input matInput [formControlName]="i" />
+              </mat-form-field>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="removeWorkExperienceDescription(i)"
+              >
+                <mat-icon>remove_circle</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center mt-3">
+            <button
+              mat-fab
+              extended
+              color="primary"
+              (click)="addWorkExperienceDescription()"
+            >
+              Add description <mat-icon>add_circle</mat-icon>
+            </button>
+          </div>
+        </div>
       </form>
     </mat-expansion-panel>
   </mat-accordion>
