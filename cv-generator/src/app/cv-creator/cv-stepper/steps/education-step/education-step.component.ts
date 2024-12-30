@@ -27,6 +27,7 @@ export class EducationStepComponent implements OnInit {
     public readonly service: EducationStepService,
     private cvFormBuilder: CvFormBuilder
   ) {}
+
   public ngOnInit(): void {
     this.addEducation();
   }

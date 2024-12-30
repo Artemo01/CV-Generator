@@ -2,13 +2,13 @@
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title> Education </mat-panel-title>
+        <mat-panel-title> Experience </mat-panel-title>
         <button
           *ngIf="index !== 0"
           mat-icon-button
           color="warn"
           aria-label="Remove"
-          (click)="removeEducationItem.emit(index)"
+          (click)="removeExperienceItem.emit(index)"
           class="remove-button"
         >
           <mat-icon>remove_circle</mat-icon>
@@ -49,20 +49,12 @@
         </div>
 
         <mat-form-field appearance="fill">
-          <mat-label>Faculty</mat-label>
-          <input matInput formControlName="faculty" />
+          <mat-label>Company name</mat-label>
+          <input matInput formControlName="companyName" />
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Degree title</mat-label>
-          <input matInput formControlName="degreeTitle" />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Institution type</mat-label>
-          <input matInput formControlName="institutionType" />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Additional info</mat-label>
-          <input matInput formControlName="additionalInfo" />
+          <mat-label>Position</mat-label>
+          <input matInput formControlName="position" />
         </mat-form-field>
       </form>
     </mat-expansion-panel>

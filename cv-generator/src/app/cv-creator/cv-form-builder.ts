@@ -15,6 +15,8 @@ import {
   Language,
   LanguageProficiencyLevel,
   LanguageSection,
+  WorkExperience,
+  WorkExperienceSection,
 } from './models';
 import { ControlsOf } from '../models';
 
@@ -136,6 +138,47 @@ export class CvFormBuilder {
         nonNullable: true,
         validators: [Validators.required],
       }),
+    });
+  }
+
+  public buildWorkExperienceSectionForm(): FormGroup<
+    ControlsOf<WorkExperienceSection>
+  > {
+    return this.formBuilder.group({
+      workExperiences: this.formBuilder.array<
+        FormGroup<ControlsOf<WorkExperience>>
+      >([]),
+      columnPosition: new FormControl<ColumnPosition>(ColumnPosition.left, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+    });
+  }
+
+  public createWorkExperienceFormGroup(): FormGroup<
+    ControlsOf<WorkExperience>
+  > {
+    return this.formBuilder.group({
+      startDate: new FormControl<Date>(new Date(), {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      endDate: new FormControl<Date>(new Date(), {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      companyName: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      position: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      experienceDescriptions: this.formBuilder.array<FormControl<string>>(
+        [],
+        Validators.required
+      ),
     });
   }
 }

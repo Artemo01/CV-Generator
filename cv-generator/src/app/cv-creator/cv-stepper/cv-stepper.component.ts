@@ -13,6 +13,7 @@ import {
   LanguageProficiencyLevel,
 } from '../models';
 import { AdditionalInfoStepComponent } from './steps/layout-step/layout-step.component';
+import { ExperienceStepComponent } from './steps/experience-step/experience-step.component';
 
 @Component({
   selector: 'app-cv-stepper',
@@ -26,6 +27,7 @@ import { AdditionalInfoStepComponent } from './steps/layout-step/layout-step.com
     EducationStepComponent,
     AdditionalInfoStepComponent,
     HttpClientModule,
+    ExperienceStepComponent,
   ],
   templateUrl: './cv-stepper.component.html',
   styleUrl: './cv-stepper.component.scss',
