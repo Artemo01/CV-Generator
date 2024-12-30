@@ -18,23 +18,25 @@ import { ContactStepService } from '../contact-step/contact-step.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
 import { LanguagesStepService } from '../languages-step/languages-step.service';
 import { EducationStepService } from '../education-step/education-step.service';
 
 export type FormModel = AboutMe | Contact | EducationSection | LanguageSection;
 
 @Component({
-  selector: 'app-additional-info-step',
+  selector: 'app-layout-step',
   standalone: true,
   imports: [
     CommonModule,
     MatExpansionModule,
     MatButtonModule,
+    MatCardModule,
     CdkDropList,
     CdkDrag,
   ],
-  templateUrl: './additional-info-step.component.html',
-  styleUrl: './additional-info-step.component.scss',
+  templateUrl: './layout-step.component.html',
+  styleUrl: './layout-step.component.scss',
 })
 export class AdditionalInfoStepComponent {
   public forms: { id: string; label: string; data: FormModel }[] = [
@@ -86,6 +88,7 @@ export class AdditionalInfoStepComponent {
 
     console.log(movedItem);
     console.log(event.container);
+    console.log(event);
 
     movedItem.data.columnPosition =
       event.container.id === 'leftColumnList'

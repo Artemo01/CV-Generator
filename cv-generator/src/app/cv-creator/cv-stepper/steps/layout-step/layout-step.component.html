@@ -6,11 +6,12 @@
       #leftColumnList="cdkDropList"
       [cdkDropListData]="leftColumn"
       [cdkDropListConnectedTo]="[rightColumnList]"
-      class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let form of leftColumn" class="example-box" cdkDrag>
-        {{ form.label }}
+      <div *ngFor="let form of leftColumn" class="cursor-move m-1" cdkDrag>
+        <mat-card appearance="outlined">
+          <mat-card-content>{{ form.label }}</mat-card-content>
+        </mat-card>
       </div>
     </div>
   </div>
@@ -22,11 +23,12 @@
       #rightColumnList="cdkDropList"
       [cdkDropListData]="rightColumn"
       [cdkDropListConnectedTo]="[leftColumnList]"
-      class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <div *ngFor="let form of rightColumn" class="example-box" cdkDrag>
-        {{ form.label }}
+      <div *ngFor="let form of rightColumn" class="cursor-move m-1" cdkDrag>
+        <mat-card appearance="outlined">
+          <mat-card-content>{{ form.label }}</mat-card-content>
+        </mat-card>
       </div>
     </div>
   </div>
