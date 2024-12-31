@@ -22,6 +22,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LanguagesStepService } from '../languages-step/languages-step.service';
 import { EducationStepService } from '../education-step/education-step.service';
 import { ExperienceStepService } from '../experience-step/experience-step.service';
+import { Router } from '@angular/router';
 
 export type FormModel = AboutMe | Contact | EducationSection | LanguageSection;
 
@@ -73,7 +74,8 @@ export class AdditionalInfoStepComponent {
     public readonly contactStepService: ContactStepService,
     public readonly languagesStepService: LanguagesStepService,
     public readonly educationStepService: EducationStepService,
-    public readonly experienceStepService: ExperienceStepService
+    public readonly experienceStepService: ExperienceStepService,
+    private readonly router: Router
   ) {}
 
   public get leftColumn() {
@@ -86,6 +88,10 @@ export class AdditionalInfoStepComponent {
     return this.forms.filter(
       (form) => form.data.columnPosition === ColumnPosition.right
     );
+  }
+
+  public navigateToSummary(): void {
+    this.router.navigate(['/creator/summary']);
   }
 
   public drop(

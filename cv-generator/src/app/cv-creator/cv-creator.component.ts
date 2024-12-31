@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
-import { CvStepperComponent } from './cv-stepper/cv-stepper.component';
-import { AboutMeStepService } from './cv-stepper/steps/about-me-step/about-me-step.service';
-import { ContactStepService } from './cv-stepper/steps/contact-step/contact-step.service';
-import { combineLatest, map } from 'rxjs';
+import { RouterOutlet } from '@angular/router';
 import { CvCreatorService } from './cv-creator.service';
 
 @Component({
@@ -14,12 +10,5 @@ import { CvCreatorService } from './cv-creator.service';
   styleUrl: './cv-creator.component.scss',
 })
 export class CvCreatorComponent {
-  constructor(
-    private readonly service: CvCreatorService,
-    private readonly router: Router
-  ) {}
-
-  public navigateToSummary(): void {
-    this.router.navigate(['/creator/summary']);
-  }
+  constructor(private readonly service: CvCreatorService) {}
 }

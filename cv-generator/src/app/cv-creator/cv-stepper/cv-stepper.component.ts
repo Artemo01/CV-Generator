@@ -5,7 +5,6 @@ import { AboutMeStepComponent } from './steps/about-me-step/about-me-step.compon
 import { ContactStepComponent } from './steps/contact-step/contact-step.component';
 import { EducationStepComponent } from './steps/education-step/education-step.component';
 import { LanguagesStepComponent } from './steps/languages-step/languages-step.component';
-import { HttpClientModule } from '@angular/common/http';
 import { AdditionalInfoStepComponent } from './steps/layout-step/layout-step.component';
 import { ExperienceStepComponent } from './steps/experience-step/experience-step.component';
 
@@ -20,7 +19,6 @@ import { ExperienceStepComponent } from './steps/experience-step/experience-step
     LanguagesStepComponent,
     EducationStepComponent,
     AdditionalInfoStepComponent,
-    HttpClientModule,
     ExperienceStepComponent,
   ],
   templateUrl: './cv-stepper.component.html',
