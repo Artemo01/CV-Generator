@@ -36,6 +36,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   public goToCvCreator(): void {
-    this.router.navigate(['/cv-creator']);
+    this.router.navigate(['/creator']);
   }
 }
