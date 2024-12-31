@@ -137,11 +137,4 @@ export class AdditionalInfoStepComponent {
         console.warn(`No service found for form with id: ${id}`);
     }
   }
-
-  public test() {
-    console.log(this.aboutMeStepService.form.value);
-    console.log(this.contactStepService.form.value);
-    console.log(this.languagesStepService.form.value);
-    console.log(this.educationStepService.form.value);
-  }
 }
