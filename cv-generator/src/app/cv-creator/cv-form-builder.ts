@@ -148,7 +148,7 @@ export class CvFormBuilder {
       workExperiences: this.formBuilder.array<
         FormGroup<ControlsOf<WorkExperience>>
       >([]),
-      columnPosition: new FormControl<ColumnPosition>(ColumnPosition.left, {
+      columnPosition: new FormControl<ColumnPosition>(ColumnPosition.right, {
         nonNullable: true,
         validators: [Validators.required],
       }),

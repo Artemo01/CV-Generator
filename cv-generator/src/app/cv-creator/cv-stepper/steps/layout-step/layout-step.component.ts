@@ -21,6 +21,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { LanguagesStepService } from '../languages-step/languages-step.service';
 import { EducationStepService } from '../education-step/education-step.service';
+import { ExperienceStepService } from '../experience-step/experience-step.service';
 
 export type FormModel = AboutMe | Contact | EducationSection | LanguageSection;
 
@@ -60,13 +61,19 @@ export class AdditionalInfoStepComponent {
       label: 'Education',
       data: this.educationStepService.form.value as EducationSection,
     },
+    {
+      id: 'experience',
+      label: 'Experience',
+      data: this.experienceStepService.form.value as EducationSection,
+    },
   ];
 
   constructor(
     public readonly aboutMeStepService: AboutMeStepService,
     public readonly contactStepService: ContactStepService,
     public readonly languagesStepService: LanguagesStepService,
-    public readonly educationStepService: EducationStepService
+    public readonly educationStepService: EducationStepService,
+    public readonly experienceStepService: ExperienceStepService
   ) {}
 
   public get leftColumn() {
@@ -85,10 +92,6 @@ export class AdditionalInfoStepComponent {
     event: CdkDragDrop<{ id: string; label: string; data: FormModel }[]>
   ) {
     const movedItem = event.previousContainer.data[event.previousIndex];
-
-    console.log(movedItem);
-    console.log(event.container);
-    console.log(event);
 
     movedItem.data.columnPosition =
       event.container.id === 'leftColumnList'
@@ -132,6 +135,9 @@ export class AdditionalInfoStepComponent {
         break;
       case 'education':
         this.educationStepService.updateColumnPosition(position);
+        break;
+      case 'experience':
+        this.experienceStepService.updateColumnPosition(position);
         break;
       default:
         console.warn(`No service found for form with id: ${id}`);
