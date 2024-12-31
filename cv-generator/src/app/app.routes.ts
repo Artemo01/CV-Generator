@@ -5,6 +5,7 @@ import { CvStepperComponent } from './cv-creator/cv-stepper/cv-stepper.component
 import { SummaryComponent } from './cv-creator/summary/summary.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   {
     path: 'creator',
