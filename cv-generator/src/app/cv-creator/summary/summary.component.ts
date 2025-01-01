@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CvCreatorService } from '../cv-creator.service';
 import { CvDocumentModel } from '../models';
 import { CvCreatorProvider } from '../cv-creator.provider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-summary',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule, MatButtonModule],
   templateUrl: './summary.component.html',
   styleUrl: './summary.component.scss',
   providers: [CvCreatorProvider],
