@@ -14,6 +14,8 @@ import {
   Language,
   LanguageProficiencyLevel,
   LanguageSection,
+  Skill,
+  SkillSection,
   WorkExperience,
   WorkExperienceSection,
 } from './models';
@@ -178,6 +180,37 @@ export class CvFormBuilder {
         [],
         Validators.required
       ),
+    });
+  }
+
+  public createSkillForm(): FormGroup<ControlsOf<Skill>> {
+    return this.formBuilder.group({
+      skillName: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      skillLevel: new FormControl<number>(0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+    });
+  }
+
+  public buildSkillSectionForm(): FormGroup<ControlsOf<SkillSection>> {
+    return this.formBuilder.group({
+      skills: this.formBuilder.array<FormGroup<ControlsOf<Skill>>>([]),
+      sectionName: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      showLevel: new FormControl<boolean>(false, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      columnPosition: new FormControl<ColumnPosition>(ColumnPosition.right, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
     });
   }
 }
