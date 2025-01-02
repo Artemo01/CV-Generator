@@ -7,6 +7,7 @@ import { EducationStepComponent } from './steps/education-step/education-step.co
 import { LanguagesStepComponent } from './steps/languages-step/languages-step.component';
 import { AdditionalInfoStepComponent } from './steps/layout-step/layout-step.component';
 import { ExperienceStepComponent } from './steps/experience-step/experience-step.component';
+import { SkillsStepComponent } from './steps/skills-step/skills-step.component';
 
 @Component({
   selector: 'app-cv-stepper',
@@ -20,6 +21,7 @@ import { ExperienceStepComponent } from './steps/experience-step/experience-step
     EducationStepComponent,
     AdditionalInfoStepComponent,
     ExperienceStepComponent,
+    SkillsStepComponent,
   ],
   templateUrl: './cv-stepper.component.html',
   styleUrl: './cv-stepper.component.scss',

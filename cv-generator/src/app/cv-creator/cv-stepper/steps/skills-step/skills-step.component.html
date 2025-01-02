@@ -1,1 +1,19 @@
 <p>skills-step works!</p>
+
+<form [formGroup]="form" class="d-flex flex-row justify-content-center mt-5">
+  <div class="flex-column w-50">
+    <div formArrayName="skillSections">
+      <div
+        *ngFor="
+          let sillSectionForm of form.controls.skillSections.controls;
+          let i = index
+        "
+      >
+        <app-skill-section
+          [form]="sillSectionForm"
+          [index]="i"
+        ></app-skill-section>
+      </div>
+    </div>
+  </div>
+</form>

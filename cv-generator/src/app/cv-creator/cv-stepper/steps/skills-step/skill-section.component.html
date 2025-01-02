@@ -1,0 +1,17 @@
+<form [formGroup]="form" class="d-flex flex-column">
+  <mat-form-field appearance="fill">
+    <mat-label>Skills section name</mat-label>
+    <input matInput formControlName="sectionName" />
+  </mat-form-field>
+
+  <div formArrayName="skills">
+    <div
+      *ngFor="
+        let sillSectionForm of form.controls.skills.controls;
+        let i = index
+      "
+    >
+      <app-skill-item></app-skill-item>
+    </div>
+  </div>
+</form>
