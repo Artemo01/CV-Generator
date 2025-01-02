@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ControlsOf } from '../../../../models';
 import { SkillSection } from '../../../models';
 import { SkillSectionComponent } from './skill-section.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 export interface SkillSections {
   skillSections: SkillSection[];
@@ -13,7 +15,13 @@ export interface SkillSections {
 @Component({
   selector: 'app-skills-step',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SkillSectionComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SkillSectionComponent,
+    MatIconModule,
+    MatButtonModule,
+  ],
   templateUrl: './skills-step.component.html',
   styleUrl: './skills-step.component.scss',
 })

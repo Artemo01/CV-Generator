@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ControlsOf } from '../../../../models';
-import { Skill, SkillSection } from '../../../models';
+import { Skill } from '../../../models';
 
 @Component({
   selector: 'app-skill-item',

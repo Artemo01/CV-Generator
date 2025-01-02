@@ -1,1 +1,10 @@
-<p>Skill item</p>
+<form [formGroup]="form" class="d-flex flex-row">
+  <mat-form-field appearance="fill">
+    <mat-label>Skills name</mat-label>
+    <input matInput formControlName="skillName" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Skill level</mat-label>
+    <input matInput type="number" formControlName="skillLevel" />
+  </mat-form-field>
+</form>
