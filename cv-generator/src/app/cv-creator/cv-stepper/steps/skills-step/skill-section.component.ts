@@ -24,11 +24,15 @@ import { MatExpansionModule } from '@angular/material/expansion';
   ],
   templateUrl: './skill-section.component.html',
 })
-export class SkillSectionComponent {
+export class SkillSectionComponent implements OnInit {
   @Input() form!: FormGroup<ControlsOf<SkillSection>>;
   @Input() index: number = 0;
 
   constructor(private readonly cvFormBuilder: CvFormBuilder) {}
+
+  public ngOnInit(): void {
+    this.addSkill();
+  }
 
   public addSkill(): void {
     this.form.controls.skills.push(this.cvFormBuilder.createSkillForm());

@@ -26,7 +26,10 @@
               let i = index
             "
           >
-            <app-skill-item></app-skill-item>
+            <app-skill-item
+              [form]="sillSectionForm"
+              [index]="i"
+            ></app-skill-item>
           </div>
           <div class="d-flex justify-content-center">
             <button mat-fab extended color="primary" (click)="addSkill()">
