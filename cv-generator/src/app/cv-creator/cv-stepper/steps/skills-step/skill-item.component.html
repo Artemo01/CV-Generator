@@ -3,10 +3,19 @@
     <mat-label>Skills name</mat-label>
     <input matInput formControlName="skillName" />
   </mat-form-field>
-  <mat-form-field appearance="fill" class="w-100">
-    <mat-label>Skill level</mat-label>
-    <input matInput type="number" formControlName="skillLevel" />
-  </mat-form-field>
+  <div class="w-100 mx-5 d-flex flex-column align-items-center">
+    <label class="w-100">Skill level</label>
+    <mat-slider
+      min="0"
+      max="5"
+      step="1"
+      thumbLabel
+      tickInterval="1"
+      class="w-100"
+    >
+      <input matSliderThumb formControlName="skillLevel" />
+    </mat-slider>
+  </div>
   <button
     mat-icon-button
     color="warn"

@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
 import { ControlsOf } from '../../../../models';
 import { Skill } from '../../../models';
 
@@ -16,6 +17,7 @@ import { Skill } from '../../../models';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatSliderModule,
   ],
   templateUrl: './skill-item.component.html',
 })
