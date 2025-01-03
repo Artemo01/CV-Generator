@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SkillSection } from '../../../models';
 import { ControlsOf } from '../../../../models';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SkillItemComponent } from './skill-item.component';
 import { CvFormBuilder } from '../../../cv-form-builder';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -21,6 +22,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatInputModule,
     SkillItemComponent,
     MatExpansionModule,
+    MatCheckboxModule,
   ],
   templateUrl: './skill-section.component.html',
 })

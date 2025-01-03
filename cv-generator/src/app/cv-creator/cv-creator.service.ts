@@ -6,6 +6,7 @@ import { LanguagesStepService } from './cv-stepper/steps/languages-step/language
 import { EducationStepService } from './cv-stepper/steps/education-step/education-step.service';
 import { ExperienceStepService } from './cv-stepper/steps/experience-step/experience-step.service';
 import { CvDocumentModel } from './models';
+import { SkillsStepService } from './cv-stepper/steps/skills-step/skills-step.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,8 @@ export class CvCreatorService {
     private readonly contactService: ContactStepService,
     private readonly languagesService: LanguagesStepService,
     private readonly educationService: EducationStepService,
-    private readonly experienceService: ExperienceStepService
+    private readonly experienceService: ExperienceStepService,
+    private readonly skillsService: SkillsStepService
   ) {
     this.getSummaryItems().subscribe((summaryItems) => {
       this.summaryItemsSubject.next(summaryItems);
@@ -35,14 +37,15 @@ export class CvCreatorService {
       this.languagesService.summaryItems$,
       this.educationService.summaryItems$,
       this.experienceService.summaryItems$,
+      this.skillsService.summaryItems$,
     ]).pipe(
-      map(([aboutMe, contact, languages, education, experience]) => ({
+      map(([aboutMe, contact, languages, education, experience, skills]) => ({
         aboutMe: aboutMe,
         contact: contact,
         languageSection: languages,
         educationSection: education,
         workExperienceSection: experience,
-        skillSections: [],
+        skillSections: skills,
       }))
     );
   }

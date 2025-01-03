@@ -21,6 +21,10 @@ export class SummaryComponent implements OnInit {
     private readonly cvProvider: CvCreatorProvider
   ) {}
 
+  public test() {
+    console.log(this.cvDocumentSummaryModel);
+  }
+
   public ngOnInit(): void {
     this.service.summaryItems$.subscribe((summaryItems) => {
       if (summaryItems != null) {

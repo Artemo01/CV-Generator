@@ -6,25 +6,15 @@ import {
   CdkDrag,
   CdkDropList,
 } from '@angular/cdk/drag-drop';
-import { AboutMeStepService } from '../about-me-step/about-me-step.service';
-import {
-  AboutMe,
-  ColumnPosition,
-  Contact,
-  EducationSection,
-  LanguageSection,
-} from '../../../models';
-import { ContactStepService } from '../contact-step/contact-step.service';
+import { ColumnPosition } from '../../../models';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
-import { LanguagesStepService } from '../languages-step/languages-step.service';
-import { EducationStepService } from '../education-step/education-step.service';
-import { ExperienceStepService } from '../experience-step/experience-step.service';
+
 import { Router } from '@angular/router';
 
-export type FormModel = AboutMe | Contact | EducationSection | LanguageSection;
+import { FormModel, LayoutService } from './layout.service';
 
 @Component({
   selector: 'app-layout-step',
@@ -41,53 +31,17 @@ export type FormModel = AboutMe | Contact | EducationSection | LanguageSection;
   styleUrl: './layout-step.component.scss',
 })
 export class AdditionalInfoStepComponent {
-  public forms: { id: string; label: string; data: FormModel }[] = [
-    {
-      id: 'aboutMe',
-      label: 'About Me',
-      data: this.aboutMeStepService.form.value as AboutMe,
-    },
-    {
-      id: 'contact',
-      label: 'Contact',
-      data: this.contactStepService.form.value as Contact,
-    },
-    {
-      id: 'languages',
-      label: 'Languages',
-      data: this.languagesStepService.form.value as LanguageSection,
-    },
-    {
-      id: 'education',
-      label: 'Education',
-      data: this.educationStepService.form.value as EducationSection,
-    },
-    {
-      id: 'experience',
-      label: 'Experience',
-      data: this.experienceStepService.form.value as EducationSection,
-    },
-  ];
-
   constructor(
-    public readonly aboutMeStepService: AboutMeStepService,
-    public readonly contactStepService: ContactStepService,
-    public readonly languagesStepService: LanguagesStepService,
-    public readonly educationStepService: EducationStepService,
-    public readonly experienceStepService: ExperienceStepService,
+    public readonly layoutStepService: LayoutService,
     private readonly router: Router
   ) {}
 
   public get leftColumn() {
-    return this.forms.filter(
-      (form) => form.data.columnPosition === ColumnPosition.left
-    );
+    return this.layoutStepService.getLeftColumnForms();
   }
 
   public get rightColumn() {
-    return this.forms.filter(
-      (form) => form.data.columnPosition === ColumnPosition.right
-    );
+    return this.layoutStepService.getRightColumnForms();
   }
 
   public navigateToSummary(): void {
@@ -96,15 +50,14 @@ export class AdditionalInfoStepComponent {
 
   public drop(
     event: CdkDragDrop<{ id: string; label: string; data: FormModel }[]>
-  ) {
+  ): void {
     const movedItem = event.previousContainer.data[event.previousIndex];
-
     movedItem.data.columnPosition =
       event.container.id === 'leftColumnList'
         ? ColumnPosition.left
         : ColumnPosition.right;
 
-    this.updateServiceColumnPosition(
+    this.layoutStepService.updateColumnPosition(
       movedItem.id,
       movedItem.data.columnPosition
     );
@@ -122,31 +75,6 @@ export class AdditionalInfoStepComponent {
         event.previousIndex,
         event.currentIndex
       );
-    }
-  }
-
-  private updateServiceColumnPosition(
-    id: string,
-    position: ColumnPosition
-  ): void {
-    switch (id) {
-      case 'aboutMe':
-        this.aboutMeStepService.updateColumnPosition(position);
-        break;
-      case 'contact':
-        this.contactStepService.updateColumnPosition(position);
-        break;
-      case 'languages':
-        this.languagesStepService.updateColumnPosition(position);
-        break;
-      case 'education':
-        this.educationStepService.updateColumnPosition(position);
-        break;
-      case 'experience':
-        this.experienceStepService.updateColumnPosition(position);
-        break;
-      default:
-        console.warn(`No service found for form with id: ${id}`);
     }
   }
 }

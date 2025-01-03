@@ -3,28 +3,63 @@ import { AboutMeStepService } from '../about-me-step/about-me-step.service';
 import { ContactStepService } from '../contact-step/contact-step.service';
 import { EducationStepService } from '../education-step/education-step.service';
 import { LanguagesStepService } from '../languages-step/languages-step.service';
+import { ExperienceStepService } from '../experience-step/experience-step.service';
+import { SkillsStepService } from '../skills-step/skills-step.service';
 import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
-import { ColumnPosition } from '../../../models';
+  AboutMe,
+  ColumnPosition,
+  Contact,
+  EducationSection,
+  LanguageSection,
+  SkillSection,
+  WorkExperienceSection,
+} from '../../../models';
+
+export type FormModel =
+  | AboutMe
+  | Contact
+  | EducationSection
+  | WorkExperienceSection
+  | LanguageSection
+  | SkillSection;
 
 @Injectable({
   providedIn: 'root',
 })
 export class LayoutService {
-  constructor(
-    private readonly aboutMeStepService: AboutMeStepService,
-    private readonly contactStepService: ContactStepService,
-    private readonly languagesStepService: LanguagesStepService,
-    private readonly educationStepService: EducationStepService
-  ) {}
+  public forms: { id: string; label: string; data: FormModel }[] = [];
 
-  public updateServiceColumnPosition(
-    id: string,
-    position: ColumnPosition
-  ): void {
+  constructor(
+    public readonly aboutMeStepService: AboutMeStepService,
+    public readonly contactStepService: ContactStepService,
+    public readonly languagesStepService: LanguagesStepService,
+    public readonly educationStepService: EducationStepService,
+    public readonly experienceStepService: ExperienceStepService,
+    public readonly skillsStepService: SkillsStepService
+  ) {
+    this.initializeForms();
+  }
+
+  public getLeftColumnForms() {
+    return this.forms.filter(
+      (form) => form.data.columnPosition === ColumnPosition.left
+    );
+  }
+
+  public getRightColumnForms() {
+    return this.forms.filter(
+      (form) => form.data.columnPosition === ColumnPosition.right
+    );
+  }
+
+  public updateColumnPosition(id: string, position: ColumnPosition): void {
+    if (id.startsWith('skill')) {
+      const index = parseInt(id.split('-')[1], 10);
+      this.skillsStepService.form
+        .at(index)
+        .patchValue({ columnPosition: position });
+      return;
+    }
     switch (id) {
       case 'aboutMe':
         this.aboutMeStepService.updateColumnPosition(position);
@@ -38,39 +73,59 @@ export class LayoutService {
       case 'education':
         this.educationStepService.updateColumnPosition(position);
         break;
+      case 'experience':
+        this.experienceStepService.updateColumnPosition(position);
+        break;
       default:
         console.warn(`No service found for form with id: ${id}`);
     }
   }
 
-  public handleDrop(
-    event: CdkDragDrop<{ id: string; label: string; data: any }[]> // Replace `any` with the actual type if available
-  ): void {
-    const movedItem = event.previousContainer.data[event.previousIndex];
+  private initializeForms(): void {
+    this.forms = [
+      {
+        id: 'aboutMe',
+        label: 'About Me',
+        data: this.aboutMeStepService.form.value as AboutMe,
+      },
+      {
+        id: 'contact',
+        label: 'Contact',
+        data: this.contactStepService.form.value as Contact,
+      },
+      {
+        id: 'languages',
+        label: 'Languages',
+        data: this.languagesStepService.form.value as LanguageSection,
+      },
+      {
+        id: 'education',
+        label: 'Education',
+        data: this.educationStepService.form.value as EducationSection,
+      },
+      {
+        id: 'experience',
+        label: 'Experience',
+        data: this.experienceStepService.form.value as WorkExperienceSection,
+      },
+    ];
 
-    movedItem.data.columnPosition =
-      event.container.id === 'leftColumnList'
-        ? ColumnPosition.left
-        : ColumnPosition.right;
+    this.skillsStepService.form.valueChanges.subscribe(() =>
+      this.updateSkillsForms()
+    );
+    this.updateSkillsForms();
+  }
 
-    this.updateServiceColumnPosition(
-      movedItem.id,
-      movedItem.data.columnPosition
+  private updateSkillsForms(): void {
+    const skillForms = this.skillsStepService.form.controls.map(
+      (control, index) => ({
+        id: `skill-${index}`,
+        label: `Skill Section - ${control.value.sectionName}`,
+        data: control.value as SkillSection,
+      })
     );
 
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
+    this.forms = this.forms.filter((form) => !form.id.startsWith('skill'));
+    this.forms.push(...skillForms);
   }
 }
