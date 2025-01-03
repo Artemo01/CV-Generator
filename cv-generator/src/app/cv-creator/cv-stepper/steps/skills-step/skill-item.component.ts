@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,4 +22,5 @@ import { Skill } from '../../../models';
 export class SkillItemComponent {
   @Input() form!: FormGroup<ControlsOf<Skill>>;
   @Input() index: number = 0;
+  @Output() removeSkillItem = new EventEmitter<number>();
 }

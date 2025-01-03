@@ -53,4 +53,8 @@ export class SkillsStepComponent implements OnInit {
   public addSkillSection(): void {
     this.service.form.push(this.cvFormBuilder.buildSkillSectionForm());
   }
+
+  public removeSkillSection(index: number): void {
+    this.service.form.removeAt(index);
+  }
 }

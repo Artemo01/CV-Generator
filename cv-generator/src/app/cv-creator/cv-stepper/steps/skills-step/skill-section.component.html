@@ -8,9 +8,10 @@
           mat-icon-button
           color="warn"
           aria-label="Remove"
+          (click)="removeSkillSection.emit(index)"
           class="remove-button"
         >
-          <mat-icon>remove_circle</mat-icon>
+          <mat-icon>delete_outline</mat-icon>
         </button>
       </mat-expansion-panel-header>
       <form [formGroup]="form" class="d-flex flex-column">
@@ -29,6 +30,7 @@
             <app-skill-item
               [form]="sillSectionForm"
               [index]="i"
+              (removeSkillItem)="removeSkillItem(i)"
             ></app-skill-item>
           </div>
           <div class="d-flex justify-content-center">

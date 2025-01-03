@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -27,6 +27,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 export class SkillSectionComponent implements OnInit {
   @Input() form!: FormGroup<ControlsOf<SkillSection>>;
   @Input() index: number = 0;
+  @Output() removeSkillSection = new EventEmitter<number>();
 
   constructor(private readonly cvFormBuilder: CvFormBuilder) {}
 
@@ -36,5 +37,9 @@ export class SkillSectionComponent implements OnInit {
 
   public addSkill(): void {
     this.form.controls.skills.push(this.cvFormBuilder.createSkillForm());
+  }
+
+  public removeSkillItem(index: number): void {
+    this.form.controls.skills.removeAt(index);
   }
 }
