@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -31,10 +31,14 @@ import { WorkExperience } from '../../../models';
   templateUrl: './experience-item.component.html',
   styleUrl: './experience-item.component.scss',
 })
-export class ExperienceItemComponent {
+export class ExperienceItemComponent implements OnInit {
   @Input() form!: FormGroup<ControlsOf<WorkExperience>>;
   @Input() index: number = 0;
   @Output() removeExperienceItem = new EventEmitter<number>();
+
+  public ngOnInit(): void {
+    this.addWorkExperienceDescription();
+  }
 
   public addWorkExperienceDescription(): void {
     this.form.controls.experienceDescriptions.push(
