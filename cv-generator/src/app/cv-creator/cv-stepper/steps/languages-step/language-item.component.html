@@ -7,8 +7,8 @@
   <mat-form-field appearance="fill" class="w-50">
     <mat-label>Proficiency Level</mat-label>
     <mat-select formControlName="proficiencyLevel">
-      <mat-option *ngFor="let level of proficiencyLevels" [value]="level">
-        {{ level }}
+      <mat-option *ngFor="let level of proficiencyLevels" [value]="level.value">
+        {{ level.label }}
       </mat-option>
     </mat-select>
   </mat-form-field>

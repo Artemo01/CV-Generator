@@ -1,0 +1,23 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <h5>{{ header }}</h5>
+    </div>
+    <div class="modal-body">
+      <div class="modal-message">{{ errorParameters.message }}</div>
+      <ul
+        *ngIf="
+          errorParameters.messageList != null &&
+          errorParameters.messageList.length > 0
+        "
+      >
+        <ng-container *ngFor="let message of errorParameters.messageList">
+          <li>{{ message }}</li>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="close()">Close</button>
+    </div>
+  </div>
+</div>

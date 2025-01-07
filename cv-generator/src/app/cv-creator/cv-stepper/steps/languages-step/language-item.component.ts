@@ -27,7 +27,11 @@ export class LanguagesItemComponent {
   @Output() addLanguage = new EventEmitter<void>();
   @Output() removeLanguage = new EventEmitter<number>();
 
-  public proficiencyLevels = Object.values(LanguageProficiencyLevel).filter(
-    (value) => typeof value === 'string'
-  );
+  public proficiencyLevels = [
+    { value: LanguageProficiencyLevel.beginner, label: 'Beginner' },
+    { value: LanguageProficiencyLevel.intermediate, label: 'Intermediate' },
+    { value: LanguageProficiencyLevel.advanced, label: 'Advanced' },
+    { value: LanguageProficiencyLevel.fluent, label: 'Fluent' },
+    { value: LanguageProficiencyLevel.native, label: 'Native' },
+  ];
 }

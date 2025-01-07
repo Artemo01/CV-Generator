@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { ErrorModalService } from '../shared/error-modal/error-modal.service';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +35,15 @@ export class HomeComponent {
     },
   ];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public errorModalService: ErrorModalService
+  ) {}
+
+  public test() {
+    const message = 'testMessage';
+    this.errorModalService.displayModalError({ message: message });
+  }
 
   public goToCvCreator(): void {
     this.router.navigate(['/creator']);
