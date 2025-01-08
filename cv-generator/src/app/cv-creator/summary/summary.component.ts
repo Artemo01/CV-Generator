@@ -4,6 +4,7 @@ import { CvDocumentModel } from '../models';
 import { CvCreatorProvider } from '../cv-creator.provider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ErrorModalService } from '../../shared/error-modal/error-modal.service';
 
 @Component({
   selector: 'app-summary',
@@ -18,12 +19,9 @@ export class SummaryComponent implements OnInit {
 
   constructor(
     private readonly service: CvCreatorService,
-    private readonly cvProvider: CvCreatorProvider
+    private readonly cvProvider: CvCreatorProvider,
+    private readonly errorModalService: ErrorModalService
   ) {}
-
-  public test() {
-    console.log(this.cvDocumentSummaryModel);
-  }
 
   public ngOnInit(): void {
     this.service.summaryItems$.subscribe((summaryItems) => {
@@ -36,7 +34,8 @@ export class SummaryComponent implements OnInit {
   public downloadCV(): void {
     this.cvProvider.generatePdf(this.cvDocumentSummaryModel).subscribe({
       next: (response: Blob) => this.downloadFile(response),
-      error: (error) => console.error('Error generating CV:', error),
+      error: (error) =>
+        this.errorModalService.displayModalError({ message: error.message }),
     });
   }
 

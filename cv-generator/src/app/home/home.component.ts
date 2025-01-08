@@ -40,11 +40,6 @@ export class HomeComponent {
     public errorModalService: ErrorModalService
   ) {}
 
-  public test() {
-    const message = 'testMessage';
-    this.errorModalService.displayModalError({ message: message });
-  }
-
   public goToCvCreator(): void {
     this.router.navigate(['/creator']);
   }

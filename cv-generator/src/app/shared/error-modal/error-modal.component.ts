@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { defaultErrorParameters } from './error-modal.constants';
+import { MatButtonModule } from '@angular/material/button';
 
 export interface ErrorModalParametres {
   message: string;
@@ -10,13 +11,15 @@ export interface ErrorModalParametres {
 @Component({
   selector: 'app-error-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './error-modal.component.html',
   styleUrl: './error-modal.component.scss',
 })
 export class ErrorModalComponent {
   public header = 'An error occured';
   public errorParameters: ErrorModalParametres;
+
+  @Output() closed = new EventEmitter<void>();
 
   constructor() {
     this.errorParameters = defaultErrorParameters;
@@ -37,5 +40,7 @@ export class ErrorModalComponent {
     this.errorParameters = parameters;
   }
 
-  public close(): void {}
+  public close(): void {
+    this.closed.emit();
+  }
 }

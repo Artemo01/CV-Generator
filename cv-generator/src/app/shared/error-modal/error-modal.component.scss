@@ -13,38 +13,16 @@
 
 .modal {
   display: block;
-  top: 50%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
+  transform: translate(-50%);
+  background: #343a40;
   border-radius: 8px;
-  width: 400px;
+  width: 600px;
   height: max-content;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-.modal-header,
 .modal-footer {
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
-}
-
-.modal-footer {
-  border-top: 1px solid #ddd;
   text-align: right;
-}
-
-.modal-message {
-  padding: 1rem;
-}
-
-.close-button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  line-height: 1;
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  cursor: pointer;
 }
