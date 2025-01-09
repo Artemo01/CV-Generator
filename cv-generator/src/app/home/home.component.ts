@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { ErrorModalService } from '../shared/error-modal/error-modal.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatButtonModule],
+  imports: [CommonModule, MatButtonModule, TranslateModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

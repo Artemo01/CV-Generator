@@ -9,9 +9,10 @@ public static class LanguagesSectionBuilder
 {
     public static void Build(ColumnDescriptor column, LanguageSection languages)
     {
+        var sectionTitle = TranslationsHelper.GetTranslation("Languages", "pl");
         var textColor = ColumnHelper.GetTextColor(languages.ColumnPosition);
         
-        SectionHeaderBuilder.DisplayHeader(column, languages.ColumnPosition, "Languages", textColor);
+        SectionHeaderBuilder.DisplayHeader(column, languages.ColumnPosition, sectionTitle, textColor);
         
         foreach (var language in languages.Languages)
         {

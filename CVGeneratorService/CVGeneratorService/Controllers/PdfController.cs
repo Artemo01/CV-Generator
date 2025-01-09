@@ -135,7 +135,7 @@ public class PdfController : ControllerBase
             }
         };
             
-        var document = _pdfService.GenerateSamplePdf(documentModel);
+        var document = _pdfService.GenerateSamplePdf(cvDocumentMode);
         var pdf = document.GeneratePdf();
         return File(pdf, "application/pdf", "FakeCV.pdf");
     }

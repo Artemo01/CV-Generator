@@ -16,7 +16,8 @@ public static class AboutMeSectionBuilder
         column.Item().AlignCenter().Text(name).FontSize(14).Bold().FontColor(textColor);
         column.Item().AlignCenter().Text(aboutMe.Job).FontColor(textColor);
 
-        SectionHeaderBuilder.DisplayHeader(column, aboutMe.ColumnPosition, "About me", textColor);
+        var sectionTitle = TranslationsHelper.GetTranslation("AboutMe", "pl");
+        SectionHeaderBuilder.DisplayHeader(column, aboutMe.ColumnPosition, sectionTitle, textColor);
         column.Item().Text(aboutMe.AboutMeText).FontColor(textColor);
 
         if (aboutMe.ColumnPosition == ColumnPosition.Right)

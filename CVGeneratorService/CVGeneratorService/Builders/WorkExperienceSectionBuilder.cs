@@ -1,4 +1,5 @@
 using CVGeneratorService.Models;
+using CVGeneratorService.Utils;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 
@@ -8,7 +9,9 @@ public static class WorkExperienceSectionBuilder
 {
     public static void Build(ColumnDescriptor column, WorkExperienceSection workExperience)
     {
-        column.Item().Text("Work Experience").FontSize(16).Bold().FontColor(Colors.Black);
+        var sectionTitle = TranslationsHelper.GetTranslation("Experience", "pl");
+        
+        column.Item().Text(sectionTitle).FontSize(16).Bold().FontColor(Colors.Black);
         column.Item().LineHorizontal(1).LineColor(Colors.Grey.Medium);
         column.Item().PaddingTop(10);
         
