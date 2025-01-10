@@ -1,0 +1,19 @@
+<div class="cv-dropdown-wrapper">
+  <div class="cv-dropdown-button" (click)="toggleDropdown()">
+    <img
+      [src]="selectedLanguage.flag"
+      alt="{{ selectedLanguage.name }}"
+      class="flag-image"
+    />
+  </div>
+  <div class="cv-dropdown-menu" [class.show]="isDropdownOpen">
+    <div
+      *ngFor="let language of languages"
+      class="cv-dropdown-item"
+      [class.active]="language.code === selectedLanguage.code"
+      (click)="changeLanguage(language)"
+    >
+      <img [src]="language.flag" alt="{{ language.name }}" class="flag-image" />
+    </div>
+  </div>
+</div>
