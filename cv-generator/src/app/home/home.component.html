@@ -27,9 +27,11 @@
       <div *ngFor="let step of steps; let i = index">
         <div class="card mb-3">
           <div class="card-body">
-            <h5 class="card-title">{{ step.step }}. {{ step.title }}</h5>
+            <h5 class="card-title">
+              {{ step.step }}. {{ step.title | translate }}
+            </h5>
             <p class="card-text">
-              {{ step.description }}
+              {{ step.description | translate }}
             </p>
           </div>
         </div>

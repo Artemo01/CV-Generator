@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { LanguagesItemComponent } from './language-item.component';
 import { LanguagesStepService } from './languages-step.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-languages-step',
@@ -20,6 +21,7 @@ import { LanguagesStepService } from './languages-step.service';
     MatButtonModule,
     MatIconModule,
     LanguagesItemComponent,
+    TranslateModule,
   ],
   templateUrl: './languages-step.component.html',
   styleUrl: './languages-step.component.scss',

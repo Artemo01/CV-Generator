@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ContactStepService } from './contact-step.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contact-step',
@@ -17,6 +18,7 @@ import { ContactStepService } from './contact-step.service';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    TranslateModule,
   ],
   templateUrl: './contact-step.component.html',
   styleUrl: './contact-step.component.scss',

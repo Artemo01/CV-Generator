@@ -8,6 +8,7 @@ import { LanguagesStepComponent } from './steps/languages-step/languages-step.co
 import { AdditionalInfoStepComponent } from './steps/layout-step/layout-step.component';
 import { ExperienceStepComponent } from './steps/experience-step/experience-step.component';
 import { SkillsStepComponent } from './steps/skills-step/skills-step.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cv-stepper',
@@ -22,6 +23,7 @@ import { SkillsStepComponent } from './steps/skills-step/skills-step.component';
     AdditionalInfoStepComponent,
     ExperienceStepComponent,
     SkillsStepComponent,
+    TranslateModule,
   ],
   templateUrl: './cv-stepper.component.html',
   styleUrl: './cv-stepper.component.scss',

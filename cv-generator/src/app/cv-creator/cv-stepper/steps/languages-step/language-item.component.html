@@ -1,14 +1,14 @@
 <form [formGroup]="form" class="d-flex justify-content-between">
   <mat-form-field appearance="fill">
-    <mat-label>Language</mat-label>
+    <mat-label>{{ "StringLanguage" | translate }}</mat-label>
     <input matInput formControlName="languageName" />
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="w-50">
-    <mat-label>Proficiency Level</mat-label>
+    <mat-label>{{ "StringProficiencyLevel" | translate }}</mat-label>
     <mat-select formControlName="proficiencyLevel">
       <mat-option *ngFor="let level of proficiencyLevels" [value]="level.value">
-        {{ level.label }}
+        {{ level.label | translate }}
       </mat-option>
     </mat-select>
   </mat-form-field>

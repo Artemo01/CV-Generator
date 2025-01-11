@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { AboutMeStepService } from './about-me-step.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-about-me-step',
@@ -13,6 +14,7 @@ import { AboutMeStepService } from './about-me-step.service';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    TranslateModule,
   ],
   templateUrl: './about-me-step.component.html',
   styleUrl: './about-me-step.component.scss',

@@ -16,22 +16,22 @@ export class HomeComponent {
   public steps = [
     {
       step: 1,
-      title: 'Create new project',
-      description: 'Click “Create CV now” to get started on your new project',
+      title: 'StringCreateNewProject',
+      description: 'StringClickCreateCVNowToGetStartedOnYourNewProject',
       image: 'assets/step1.png',
     },
     {
       step: 2,
-      title: 'Fill in the indicated fields',
+      title: 'StringFillInTheIndicatedFields',
       description:
         'The CV builder will allow you to create a professional CV easily, quickly and conveniently. Just fill out the form and your document will be automatically generated based on the information you provide',
       image: 'assets/step2.png',
     },
     {
       step: 3,
-      title: 'Download PDF with your CV',
+      title: 'StringDownloadPDFWithYourCV',
       description:
-        'Your resume will be immediately ready for download in PDF format. ',
+        'StringYourResumeWillBeImmediatelyReadyForDownloadInPDFFormat',
       image: 'assets/step3.png',
     },
   ];

@@ -4,28 +4,28 @@
 >
   <div class="flex-column w-50">
     <mat-form-field class="w-100">
-      <mat-label>First name</mat-label>
+      <mat-label>{{ "StringFirstName" | translate }}</mat-label>
       <input matInput formControlName="firstName" />
     </mat-form-field>
 
     <mat-form-field class="w-100">
-      <mat-label>Last name</mat-label>
+      <mat-label>{{ "StringLastName" | translate }}</mat-label>
       <input matInput formControlName="lastName" />
     </mat-form-field>
 
     <mat-form-field class="w-100">
-      <mat-label>Job title</mat-label>
+      <mat-label>{{ "StringJobTitle" | translate }}</mat-label>
       <input matInput formControlName="job" />
     </mat-form-field>
 
     <mat-form-field class="w-100">
-      <mat-label>About me</mat-label>
+      <mat-label>{{ "StringAboutMe" | translate }}</mat-label>
       <textarea matInput formControlName="aboutMeText" rows="5"></textarea>
     </mat-form-field>
 
     <div class="d-flex justify-content-end">
       <button mat-fab extended color="primary" (click)="nextStep()">
-        Next
+        {{ "StringNext" | translate }}
       </button>
     </div>
   </div>

@@ -1,23 +1,23 @@
 <mat-stepper #stepper [linear]="true">
-  <mat-step label="About me">
+  <mat-step [label]="'StringAboutMe' | translate">
     <app-about-me-step (next)="stepper.next()"></app-about-me-step>
   </mat-step>
-  <mat-step label="Contact">
+  <mat-step [label]="'StringContact' | translate">
     <app-contact-step (next)="stepper.next()"></app-contact-step>
   </mat-step>
-  <mat-step label="Languages">
+  <mat-step [label]="'StringLanguages' | translate">
     <app-languages-step (next)="stepper.next()"></app-languages-step>
   </mat-step>
-  <mat-step label="Education">
+  <mat-step [label]="'StringEducation' | translate">
     <app-education-step (next)="stepper.next()"></app-education-step>
   </mat-step>
-  <mat-step label="Experience">
+  <mat-step [label]="'StringExperience' | translate">
     <app-experience-step (next)="stepper.next()"></app-experience-step>
   </mat-step>
-  <mat-step label="Skills">
+  <mat-step [label]="'StringSkills' | translate">
     <app-skills-step (next)="stepper.next()"></app-skills-step>
   </mat-step>
-  <mat-step label="Layout">
+  <mat-step [label]="'StringLayout' | translate">
     <app-layout-step></app-layout-step>
   </mat-step>
 </mat-stepper>
