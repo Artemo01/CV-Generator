@@ -20,6 +20,7 @@ import {
   WorkExperienceSection,
 } from './models';
 import { ControlsOf } from '../models';
+import { cvCreatorValidators } from './cv-creator.constatnts';
 
 @Injectable({
   providedIn: 'root',
@@ -31,23 +32,23 @@ export class CvFormBuilder {
     return this.formBuilder.group({
       firstName: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       lastName: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       job: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       aboutMeText: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       columnPosition: new FormControl<ColumnPosition>(ColumnPosition.left, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
     });
   }
@@ -56,23 +57,23 @@ export class CvFormBuilder {
     return this.formBuilder.group({
       email: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.email,
       }),
       phone: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       born: new FormControl<Date>(new Date(), {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       address: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       columnPosition: new FormControl<ColumnPosition>(ColumnPosition.left, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
     });
   }
@@ -82,7 +83,7 @@ export class CvFormBuilder {
       languages: this.formBuilder.array<FormGroup<ControlsOf<Language>>>([]),
       columnPosition: new FormControl<ColumnPosition>(ColumnPosition.left, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
     });
   }
@@ -91,13 +92,13 @@ export class CvFormBuilder {
     return this.formBuilder.group({
       languageName: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       proficiencyLevel: new FormControl<LanguageProficiencyLevel>(
         LanguageProficiencyLevel.beginner,
         {
           nonNullable: true,
-          validators: [Validators.required],
+          validators: cvCreatorValidators.required,
         }
       ),
     });
@@ -108,7 +109,7 @@ export class CvFormBuilder {
       educations: this.formBuilder.array<FormGroup<ControlsOf<Education>>>([]),
       columnPosition: new FormControl<ColumnPosition>(ColumnPosition.right, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
     });
   }
@@ -117,27 +118,27 @@ export class CvFormBuilder {
     return this.formBuilder.group({
       startDate: new FormControl<Date>(new Date(), {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       endDate: new FormControl<Date>(new Date(), {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       faculty: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       degreeTitle: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       institutionType: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       additionalInfo: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
     });
   }
@@ -151,7 +152,7 @@ export class CvFormBuilder {
       >([]),
       columnPosition: new FormControl<ColumnPosition>(ColumnPosition.right, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
     });
   }
@@ -162,23 +163,23 @@ export class CvFormBuilder {
     return this.formBuilder.group({
       startDate: new FormControl<Date>(new Date(), {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       endDate: new FormControl<Date>(new Date(), {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       companyName: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       position: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       experienceDescriptions: this.formBuilder.array<FormControl<string>>(
         [],
-        Validators.required
+        cvCreatorValidators.required
       ),
     });
   }
@@ -187,11 +188,11 @@ export class CvFormBuilder {
     return this.formBuilder.group({
       skillName: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       skillLevel: new FormControl<number>(0, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
     });
   }
@@ -201,15 +202,15 @@ export class CvFormBuilder {
       skills: this.formBuilder.array<FormGroup<ControlsOf<Skill>>>([]),
       sectionName: new FormControl<string>('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       showLevel: new FormControl<boolean>(false, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
       columnPosition: new FormControl<ColumnPosition>(ColumnPosition.right, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: cvCreatorValidators.required,
       }),
     });
   }
