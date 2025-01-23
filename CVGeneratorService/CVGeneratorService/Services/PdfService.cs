@@ -11,7 +11,7 @@ public class PdfService : IPdfService
 {
     public IDocument GenerateSamplePdf(CvDocumentModel cvDocument)
     {
-        var imageBytes = LoadProfileImage("profile.png");
+        var imageBytes = cvDocument.AboutMe.ProfileImage ?? Array.Empty<byte>(); 
         
         var (leftColumn, rightColumn) = SplitIntoColumns(cvDocument);
 

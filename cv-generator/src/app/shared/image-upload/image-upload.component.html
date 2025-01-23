@@ -1,0 +1,19 @@
+<div
+  class="file-upload d-flex flex-column align-items-center justify-content-center"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+  (drop)="onDrop($event)"
+  [class.dragging]="isDragging"
+>
+  <label for="fileUpload" class="upload-label">
+    Drag and drop an image here or click to upload
+  </label>
+  <p class="upload-hint">Supported formats: PNG, JPG, JPEG</p>
+  <input
+    type="file"
+    id="fileUpload"
+    class="file-input"
+    (change)="onFileSelected($event)"
+    accept=".jpg,.jpeg,.png"
+  />
+</div>

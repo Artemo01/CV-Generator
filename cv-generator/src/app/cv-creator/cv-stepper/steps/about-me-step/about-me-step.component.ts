@@ -5,6 +5,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { AboutMeStepService } from './about-me-step.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { ImageUploadComponent } from '../../../../shared/image-upload/image-upload.component';
 
 @Component({
   selector: 'app-about-me-step',
@@ -15,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatSelectModule,
     MatButtonModule,
     TranslateModule,
+    ImageUploadComponent,
   ],
   templateUrl: './about-me-step.component.html',
   styleUrl: './about-me-step.component.scss',
@@ -27,6 +29,12 @@ export class AboutMeStepComponent {
   public nextStep(): void {
     if (this.service.form.valid) {
       this.next.emit();
+    }
+  }
+
+  public handleImageFileChange(file: File): void {
+    if (file) {
+      this.service.processFile(file);
     }
   }
 }

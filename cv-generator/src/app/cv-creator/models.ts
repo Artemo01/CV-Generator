@@ -12,6 +12,7 @@ export interface AboutMe extends ColumnPositionModel {
   lastName: string;
   job: string;
   aboutMeText: string;
+  profileImage: string;
 }
 
 export interface Contact extends ColumnPositionModel {

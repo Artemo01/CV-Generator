@@ -6,4 +6,5 @@ public class AboutMe : ColumnPositionModel
     public string LastName { get; set; }
     public string Job { get; set; }
     public string AboutMeText { get; set; }
+    public byte[] ProfileImage { get; set; }
 }

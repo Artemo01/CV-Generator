@@ -46,6 +46,9 @@ export class CvFormBuilder {
         nonNullable: true,
         validators: cvCreatorValidators.required,
       }),
+      profileImage: new FormControl<string>('', {
+        nonNullable: true,
+      }),
       columnPosition: new FormControl<ColumnPosition>(ColumnPosition.left, {
         nonNullable: true,
         validators: cvCreatorValidators.required,

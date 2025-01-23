@@ -23,7 +23,11 @@
       <textarea matInput formControlName="aboutMeText" rows="5"></textarea>
     </mat-form-field>
 
-    <div class="d-flex justify-content-end">
+    <app-image-upload
+      (fileUploaded)="handleImageFileChange($event)"
+    ></app-image-upload>
+
+    <div class="d-flex justify-content-end mt-4">
       <button mat-fab extended color="primary" (click)="nextStep()">
         {{ "StringNext" | translate }}
       </button>
