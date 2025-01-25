@@ -1,7 +1,8 @@
 <div class="d-flex flex-row justify-content-center mt-5">
-  <div class="d-flex flex-column w-50">
+  <div class="d-flex flex-column w-50 mx-3">
     <div
       id="leftColumnList"
+      class="list-container"
       cdkDropList
       #leftColumnList="cdkDropList"
       [cdkDropListData]="leftColumn"
@@ -16,9 +17,10 @@
     </div>
   </div>
 
-  <div class="d-flex flex-column w-50">
+  <div class="d-flex flex-column w-50 mx-3">
     <div
       id="rightColumnList"
+      class="list-container"
       cdkDropList
       #rightColumnList="cdkDropList"
       [cdkDropListData]="rightColumn"
@@ -34,7 +36,7 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-end mt-4">
   <button mat-fab extended color="primary" (click)="navigateToSummary()">
     Finish
   </button>

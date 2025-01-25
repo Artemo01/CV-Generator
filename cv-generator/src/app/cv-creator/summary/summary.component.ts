@@ -1,24 +1,27 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CvCreatorService } from '../cv-creator.service';
-import { CvDocumentModel } from '../models';
+import { ColumnPosition, CvDocumentModel, AboutMe } from '../models';
 import { CvCreatorProvider } from '../cv-creator.provider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ErrorModalService } from '../../shared/error-modal/error-modal.service';
 import { finalize, Subject, takeUntil } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-summary',
   standalone: true,
-  imports: [MatIconModule, MatButtonModule],
+  imports: [MatIconModule, MatButtonModule, CommonModule],
   templateUrl: './summary.component.html',
   styleUrl: './summary.component.scss',
   providers: [CvCreatorProvider],
 })
 export class SummaryComponent implements OnInit, OnDestroy {
   public cvDocumentSummaryModel!: CvDocumentModel;
-
+  public image = 'data:image/png;base64,';
   public isDownload = false;
+  public leftColumnItems: any[] = [];
+  public rightColumnItems: any[] = [];
 
   private readonly destroy$ = new Subject<void>();
 
@@ -34,6 +37,13 @@ export class SummaryComponent implements OnInit, OnDestroy {
       .subscribe((summaryItems) => {
         if (summaryItems != null) {
           this.cvDocumentSummaryModel = summaryItems;
+          this.image = this.image + summaryItems.aboutMe.profileImage;
+          this.leftColumnItems = this.filterByColumnPosition(
+            ColumnPosition.left
+          );
+          this.rightColumnItems = this.filterByColumnPosition(
+            ColumnPosition.right
+          );
         }
       });
   }
@@ -65,5 +75,20 @@ export class SummaryComponent implements OnInit, OnDestroy {
     a.download = 'FakeCV.pdf';
     a.click();
     window.URL.revokeObjectURL(url);
+  }
+
+  private filterByColumnPosition(position: ColumnPosition): any[] {
+    return [
+      this.cvDocumentSummaryModel.aboutMe,
+      this.cvDocumentSummaryModel.contact,
+      this.cvDocumentSummaryModel.languageSection,
+      this.cvDocumentSummaryModel.educationSection,
+      this.cvDocumentSummaryModel.workExperienceSection,
+      ...this.cvDocumentSummaryModel.skillSections,
+    ].filter((item) => item?.columnPosition === position);
+  }
+
+  public getProperties(item: any): { key: string; value: any }[] {
+    return Object.entries(item).map(([key, value]) => ({ key, value }));
   }
 }
