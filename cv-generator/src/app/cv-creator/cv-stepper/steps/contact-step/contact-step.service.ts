@@ -31,11 +31,11 @@ export class ContactStepService {
 
   private mapToSummaryItems(formValue: Partial<Contact>): Contact {
     return {
-      email: formValue.email || '',
-      phone: formValue.phone || '',
-      born: formValue.born || new Date(),
-      address: formValue.address || '',
-      columnPosition: formValue.columnPosition || ColumnPosition.left,
+      email: formValue.email ?? '',
+      phone: formValue.phone ?? '',
+      born: formValue.born ?? new Date(),
+      address: formValue.address ?? '',
+      columnPosition: formValue.columnPosition ?? ColumnPosition.left,
     };
   }
 }

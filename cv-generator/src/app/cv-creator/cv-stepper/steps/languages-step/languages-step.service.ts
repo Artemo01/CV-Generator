@@ -35,8 +35,8 @@ export class LanguagesStepService {
     formValue: Partial<LanguageSection>
   ): LanguageSection {
     return {
-      languages: formValue.languages || [],
-      columnPosition: formValue.columnPosition || ColumnPosition.left,
+      languages: formValue.languages ?? [],
+      columnPosition: formValue.columnPosition ?? ColumnPosition.left,
     };
   }
 }

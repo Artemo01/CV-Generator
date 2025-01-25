@@ -4,6 +4,7 @@ import { AboutMe, ColumnPosition } from '../../../models';
 import { FormGroup } from '@angular/forms';
 import { ControlsOf } from '../../../../models';
 import { CvFormBuilder } from '../../../cv-form-builder';
+import { ErrorModalService } from '../../../../shared/error-modal/error-modal.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,10 @@ export class AboutMeStepService {
 
   public readonly summaryItems$: Observable<AboutMe>;
 
-  constructor(private cvFormBuilder: CvFormBuilder) {
+  constructor(
+    private cvFormBuilder: CvFormBuilder,
+    private readonly errorModalService: ErrorModalService
+  ) {
     this.form = this.cvFormBuilder.buildAboutMeForm();
     this.summaryItems$ = this.getSummaryItems();
   }
@@ -28,7 +32,9 @@ export class AboutMeStepService {
     if (this.isFileTypeAccepted(file.type)) {
       this.convertFileToBase64(file);
     } else {
-      console.error('Unsupported file type. Please upload a PNG or JPG image.');
+      const message =
+        'Unsupported file type. Please upload a PNG or JPG image.';
+      this.errorModalService.displayModalError({ message: message });
     }
   }
 
@@ -60,12 +66,12 @@ export class AboutMeStepService {
 
   private mapToSummaryItems(formValue: Partial<AboutMe>): AboutMe {
     return {
-      firstName: formValue.firstName || '',
-      lastName: formValue.lastName || '',
-      job: formValue.job || '',
-      aboutMeText: formValue.aboutMeText || '',
-      profileImage: formValue.profileImage || '',
-      columnPosition: formValue.columnPosition || ColumnPosition.left,
+      firstName: formValue.firstName ?? '',
+      lastName: formValue.lastName ?? '',
+      job: formValue.job ?? '',
+      aboutMeText: formValue.aboutMeText ?? '',
+      profileImage: formValue.profileImage ?? '',
+      columnPosition: formValue.columnPosition ?? ColumnPosition.left,
     };
   }
 }

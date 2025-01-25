@@ -34,10 +34,10 @@ export class SkillsStepService {
     formValue: Partial<SkillSection>[]
   ): SkillSection[] {
     return formValue.map((control) => ({
-      skills: control.skills || [],
-      sectionName: control.sectionName || '',
-      showLevel: control.showLevel || false,
-      columnPosition: control.columnPosition || ColumnPosition.right,
+      skills: control.skills ?? [],
+      sectionName: control.sectionName ?? '',
+      showLevel: control.showLevel ?? false,
+      columnPosition: control.columnPosition ?? ColumnPosition.right,
     }));
   }
 }

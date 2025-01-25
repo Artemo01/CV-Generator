@@ -1,7 +1,13 @@
 <div class="d-flex flex-column">
   <h1>Summary</h1>
   <div class="d-flex justify-content-center">
-    <button mat-fab extended color="primary" (click)="downloadCV()">
+    <button
+      mat-fab
+      extended
+      color="primary"
+      (click)="downloadCV()"
+      [disabled]="isDownload"
+    >
       Download CV <mat-icon>download</mat-icon>
     </button>
   </div>

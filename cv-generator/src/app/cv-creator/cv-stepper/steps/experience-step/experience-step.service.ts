@@ -35,8 +35,8 @@ export class ExperienceStepService {
     formValue: Partial<WorkExperienceSection>
   ): WorkExperienceSection {
     return {
-      workExperiences: formValue.workExperiences || [],
-      columnPosition: formValue.columnPosition || ColumnPosition.right,
+      workExperiences: formValue.workExperiences ?? [],
+      columnPosition: formValue.columnPosition ?? ColumnPosition.right,
     };
   }
 }

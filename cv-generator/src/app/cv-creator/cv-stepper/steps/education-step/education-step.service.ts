@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ControlsOf } from '../../../../models';
 import { ColumnPosition, EducationSection } from '../../../models';
 import { CvFormBuilder } from '../../../cv-form-builder';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -35,8 +35,8 @@ export class EducationStepService {
     formValue: Partial<EducationSection>
   ): EducationSection {
     return {
-      educations: formValue.educations || [],
-      columnPosition: formValue.columnPosition || ColumnPosition.right,
+      educations: formValue.educations ?? [],
+      columnPosition: formValue.columnPosition ?? ColumnPosition.right,
     };
   }
 }
